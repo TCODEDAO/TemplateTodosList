@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="Todos">
+        <div class="Todos__Content">
+            <div class="Todos__Time">
+                <div class="Todos__Time--mdy">
+                    <div class="date">12</div>
+                    <div class="month">JAN</div>
+                    <div class="year">2016</div>
+                </div>
+                <div class="Todos__Time--days">TUESDAY</div>
+            </div>
+            <div class="Todos__Work">
+                <ul class="Todos__Work--list">
+                    <li class="Todos__Work-element">
+                        <label for="1">
+                            <p class="Todos__Work--content">Buy new sweatshirt</p>
+                        </label> <input type="checkbox" id="1" class="checkbox-todos"> <label class="checkmark"
+                            for="1"></label>
+                    </li>
+                    <li class="Todos__Work-element">
+                        <label for="2">
+                            <p class="Todos__Work--content">Read an article</p>
+                        </label><input type="checkbox" id="2" class="checkbox-todos"><label class="checkmark"
+                            for="2"></label>
+                    </li>
+                </ul>
+            </div>
+            <div class="Todos__Create">
+                <form action="">
+                    <input type="text" name="" id="">
+                    <input type="submit" value="create">
+                </form>
+            </div>
+        </div>
+        <div class="Todos__Button">
+            <div class="Todos__Button--symbol noselect">+</div>
+        </div>
+    </div>
+</body>
+<script>
+    const TodosBtn = document.querySelector('.Todos__Button')
+    const TodosBtnSymbol = document.querySelector('.Todos__Button--symbol')
+    const checkBoxParagrahs = document.querySelectorAll('.checkbox-todos')
+    const Paragrahs = document.querySelectorAll('.Todos__Work--content')
+    const CreateBtn = document.querySelector('.Todos__Create')
+    TodosBtn.onclick = (e) => {
+
+        if (TodosBtnSymbol.classList.contains('animateRotateClose')) {
+            setTimeout(() => {
+                TodosBtnSymbol.style.transform = 'rotate(0)'
+            }, 200)
+            TodosBtnSymbol.classList.remove('animateRotateClose')
+            TodosBtnSymbol.classList.add('animateRotateOpen')
+            Object.assign(CreateBtn.style, {
+                opacity: 0,
+                visibility: 'hidden',
+
+
+
+            })
+
+
+        } else {
+            TodosBtnSymbol.classList.add('animateRotateClose')
+            setTimeout(() => {
+                TodosBtnSymbol.style.transform = 'rotate(0)'
+            }, 200)
+            TodosBtnSymbol.classList.remove('animateRotateOpen')
+
+            Object.assign(CreateBtn.style, {
+                opacity: 1,
+                visibility: 'visible',
+
+            })
+
+        }
+
+
+
+    }
+    checkBoxParagrahs.forEach((checkBoxParagrah, index) => {
+        checkBoxParagrah.onchange = () => {
+            if (Paragrahs[index].classList.contains('pChecked')) {
+                Paragrahs[index].classList.remove('pChecked')
+
+                Paragrahs[index].style.color = '#000'
+                return
+            }
+
+            Paragrahs[index].classList.add('pChecked')
+            Paragrahs[index].style.color = 'rgb(158, 158, 167)'
+
+
+
+
+
+        }
+    })
+
+
+
+
+</script>
+
+</html>
